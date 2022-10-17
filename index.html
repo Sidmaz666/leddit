@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leddit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js" integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="./js/main.js"></script>
+</head>
+<body class="bg-black/80 text-gray-300 overflow-x-hidden">
+
+  <nav class="bg-black/90 fixed bottom-0 flex justify-evenly w-full p-2 text-xl z-10">
+	
+	<button class="hover:text-yellow-200" onclick="window.location.reload()"><i class="fa-solid fa-house"></i></button>
+	<button class="hover:text-yellow-200"
+	   onclick="renderSubreddit('funny',true)"
+	  ><i class="fa-solid fa-face-laugh-squint"></i></button>
+	<button 
+	   onclick="renderSubreddit('pics',true)"
+	  class="hover:text-yellow-200"><i class="fa-solid fa-image"></i></button>
+	<button class="hover:text-yellow-200" onclick="toggleNavMenu()"><i class="fa-solid fa-bars"></i></button>
+
+  </nav>
+
+	<div
+	    id="nav_menu"  
+	    style="width:70%;height:95.5%"
+	    class="fixed top-0 right-0 bg-black z-10 flex p-2 flex-col hidden"
+	 >
+	
+	<span class="mt-5 mb-3 text-xl font-bold">Sub Reddits</span>
+
+	 <ul class="text-xl font-semibold">
+	   <li class=" p-2 border-b-2 cursor-pointer"
+	   onclick="toggleNavMenu();renderSubreddit('hot',false)"
+	     >Hot</li>
+	   <li class=" p-2 border-b-2 cursor-pointer"
+	   onclick="toggleNavMenu();renderSubreddit('new',false)"
+	     >New</li>
+	   <li class=" p-2 border-b-2 cursor-pointer"
+	   onclick="toggleNavMenu();renderSubreddit('rising',false)"
+	     >Rising</li>
+	   <li class=" p-2 border-b-2 cursor-pointer"
+	   onclick="toggleNavMenu();renderSubreddit('top',false)"
+	     >Top</li>
+	   <li class=" p-2 border-b-2 cursor-pointer"
+	   onclick="toggleNavMenu();renderSubreddit('popular',true)"
+	     >Popular</li>
+	   <li class=" p-2 border-b-2 cursor-pointe"
+	   onclick="toggleNavMenu();renderSubreddit('memes',true)"
+	     >Memes</li>
+	   <li class=" p-2 border-b-2 cursor-pointe"
+	   onclick="toggleNavMenu();renderSubreddit('news',true)"
+	     >News</li>
+	 </ul>
+
+	<span class="mt-5 text-xl font-bold">Visit:</span>
+	<div class="flex flex-col space-y-4 mt-3 ml-2 mr-2 ">
+	<input type="text" class="p-2 bg-black border-2 rounded-md" placeholder="r/subreddit"
+	id="search_inp"/>
+	<button 
+	   onclick="
+	   toggleNavMenu();
+	   renderSubreddit(document.getElementById('search_inp').value,true)"
+	  class="border-2 p-2 font-semibold rounded-md text-xl">Go!</button>
+	</div>
+
+	<span 
+	  onclick="document.querySelector('#about').classList.toggle('hidden')"
+	  class="m-5 text-xl font-bold cursor-pointer"><i class="fa-solid fa-circle-info"></i> About?</span>
+
+	<div class="hidden m-5 flex flex-col space-y-3" id="about">
+	  <span class="font-bold text-xl">Developed by <a class="text-green-500" href="https://github.com/sidmaz666">Sidmaz666 <i class="fa-brands fa-github"></i></a></span>
+	  <span class="font-semibold text-lg">API Used : <a class="text-yellow-400" href="https://teddit.net">teddit.net</a></span>
+	  <span class="text-sm opacity-70">All Rights Reserved <i class="fa-solid fa-copyright"></i> 2022</span>
+	</div>
+
+	</div>
+
+
+	<div class="h-screen w-screen flex justify-center items-center opacity-80" id="loader">
+	<img src="https://media.tenor.com/On7kvXhzml4AAAAi/loading-gif.gif" class="w-32" alt="loader"/>
+	</div>
+
+	<div id="content" class=" flex flex-col space-y-5 justify-items-auto items-center pt-5 p-12 ">
+	</div>
+	
+</body>
+</html>
