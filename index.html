@@ -70,16 +70,21 @@
 	</div>
 
 	<span 
-	  onclick="document.querySelector('#about').classList.toggle('hidden')"
+	  onclick="toggleNavMenu();document.querySelector('#about').classList.toggle('hidden')"
 	  class="m-5 text-xl font-bold cursor-pointer"><i class="fa-solid fa-circle-info"></i> About?</span>
 
-	<div class="hidden m-5 flex flex-col space-y-3" id="about">
-	  <span class="font-bold text-xl">Developed by <a class="text-green-500" href="https://github.com/sidmaz666">Sidmaz666 <i class="fa-brands fa-github"></i></a></span>
-	  <span class="font-semibold text-lg">API Used : <a class="text-yellow-400" href="https://teddit.net">teddit.net</a></span>
-	  <span class="text-sm opacity-70">All Rights Reserved <i class="fa-solid fa-copyright"></i> 2022</span>
 	</div>
 
+
+	<div class="hidden fixed bg-black/80 flex w-screen h-screen justify-center items-center z-20" id="about">
+	  <div class="bg-black p-2 flex flex-col space-y-3 rounded-md relative justify-center">
+	    <span onclick="document.querySelector('#about').classList.toggle('hidden')" class="cursor-pointer absolute right-0 top-0 mr-2 mb-2 font-semibold text-lg font-mono">x</span>
+	  <span class="font-bold text-xl pt-3">Developed by <a class="text-green-500" href="https://github.com/sidmaz666">Sidmaz666 <i class="fa-brands fa-github"></i></a></span>
+	  <span class="font-semibold text-lg">API Used : <a class="text-yellow-400" href="https://teddit.net">teddit.net</a></span>
+	  <span class="text-sm opacity-70">All Rights Reserved <i class="fa-solid fa-copyright"></i> 2022</span>
+	  </div>
 	</div>
+
 
 
 	<div class="h-screen w-screen flex justify-center items-center opacity-80" id="loader">
